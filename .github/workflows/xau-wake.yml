@@ -1,0 +1,36 @@
+name: LiBi XAU Wake
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  wake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Wake LiBi XAU
+        env:
+          LIBI_XAU_WAKE_SECRET: ${{ secrets.LIBI_XAU_WAKE_SECRET }}
+        run: |
+          set -euo pipefail
+          if [ -z "${LIBI_XAU_WAKE_SECRET:-}" ]; then
+            echo "Missing GitHub Actions secret: LIBI_XAU_WAKE_SECRET"
+            exit 1
+          fi
+          http_code=$(curl --silent --show-error --max-time 60 \
+            --output /tmp/libi-xau-response.txt \
+            --write-out "%{http_code}" \
+            --request POST \
+            --header "Authorization: Bearer ${LIBI_XAU_WAKE_SECRET}" \
+            --header "Content-Type: application/json" \
+            https://libi-xau.floot.app/_api/xau-wake)
+          echo "LiBi XAU wake HTTP ${http_code}"
+          if [ "${http_code}" -lt 200 ] || [ "${http_code}" -ge 300 ]; then
+            cat /tmp/libi-xau-response.txt
+            exit 1
+          fi
