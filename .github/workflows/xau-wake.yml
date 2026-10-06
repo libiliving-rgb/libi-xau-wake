@@ -1,8 +1,7 @@
 name: LiBi XAU Wake
 
 on:
-  schedule:
-    - cron: '2-57/5 * * * *'
+  # Automatic calls paused: Floot hosting is suspended; replacement writer not verified yet.
   workflow_dispatch:
 
 permissions:
