@@ -11,6 +11,7 @@ let sent=0;await m.execute('send',{root,now,quiet:true,send:async()=>{sent++;ret
 await m.execute('prepare',{root,now,quiet:true});await m.execute('send',{root,now,quiet:true,send:async()=>{sent++;throw Error('Must not resend');}});assert.equal(sent,1);checks++;
 // Simulated interruption after durable claim: a whole workflow retry prepares zero duplicates.
 persisted.events.push({eventKey:'github:test:interrupted',eventType:'SL',createdAt:now,side:'BUY'});fs.writeFileSync(path.join(root,'runner.json'),JSON.stringify(encryptState(persisted,secret)));await m.execute('prepare',{root,now,quiet:true});await m.execute('prepare',{root,now,quiet:true});await m.execute('send',{root,now,quiet:true,send:async()=>{throw Error('Must not resend ambiguous claim');}});persisted=decryptState(JSON.parse(fs.readFileSync(path.join(root,'runner.json'))),secret);assert.equal(persisted.pushLog.at(-1).status,'delivery-unknown');checks++;
+fs.unlinkSync(path.join(root,'push-config.json'));const empty=await m.execute('prepare',{root,now,quiet:true});await m.execute('send',{root,now,quiet:true});assert.equal(empty.configured,false);assert.equal(empty.deviceIds.length,0);checks++;
 }finally{fs.rmSync(root,{recursive:true,force:true});delete process.env.LIBI_XAU_WAKE_SECRET;}
 console.log(JSON.stringify({sealedPushChecks:checks,failures:0,networkCalls:0,realDeviceDeliveryTested:false}));}
 tests().catch(e=>{console.error(e.message);process.exitCode=1;});

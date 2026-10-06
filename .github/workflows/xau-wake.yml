@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/xau-wake.yml'
       - 'runner/**'
+      - 'state/push-config.json'
   schedule:
     - cron: '2-57/5 * * * *'
   workflow_dispatch:
@@ -30,6 +31,11 @@ jobs:
         run: |
           node runner/test.cjs
           node runner/runner.cjs
+      - name: Prepare private delivery claims
+        continue-on-error: true
+        env:
+          LIBI_XAU_WAKE_SECRET: ${{ secrets.LIBI_XAU_WAKE_SECRET }}
+        run: |
           node runner/push-test.cjs
           node runner/push-runner.cjs prepare
       - name: Commit only encrypted observations
