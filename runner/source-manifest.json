@@ -9,6 +9,7 @@
     "lib/xau/xauLifecycle.ts": "1bc3d69e7a155644a92ca16b9636ee47cd9cfc2c1b59aeef2ed793d26a9add61",
     "lib/xau/macroContext.ts": "2421e7208b2699bf3eb07ce7c00dca5dfdafe9054b165d498758a8493f9708c7",
     "lib/biquote-feed.ts": "42b816e17f27caf5a9e8288ad7650268da5d228b5017100e3ba0ed23b0d76204",
-    "lib/sealed-snapshot.ts": "8290091f50266f181f3691a683255d279f881e01ce7cef7a8c20da75a3749f8d"
+    "lib/sealed-snapshot.ts": "8290091f50266f181f3691a683255d279f881e01ce7cef7a8c20da75a3749f8d",
+    "lib/web-push.ts": "d90bedf3e0090933d62dfc7f385f74bb37618d321452e70760cecc786c9991f7"
   }
 }

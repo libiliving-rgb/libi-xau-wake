@@ -854,5 +854,57 @@ async function openSnapshot(envelope, privateJwk) { const d = envelope; if (d?.f
     throw new Error("Parámetros de cifrado inválidos."); const privateKey = await crypto.subtle.importKey("jwk", privateJwk, { name: "ECDH", namedCurve: "P-256" }, false, ["deriveBits"]), publicKey = await crypto.subtle.importKey("jwk", d.ephemeralKey, { name: "ECDH", namedCurve: "P-256" }, false, []), key = await sharedKey(privateKey, publicKey, salt); const plain = await crypto.subtle.decrypt({ name: "AES-GCM", iv, additionalData: encoder.encode("libi-xau-sealed-v1") }, key, unb64(d.ciphertext)); return JSON.parse(new TextDecoder().decode(plain)); }
 
 };
+modules["lib/web-push"]=(require,module,exports)=>{
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.encode64 = void 0;
+exports.decode64 = decode64;
+exports.validateSubscription = validateSubscription;
+exports.encryptPush = encryptPush;
+exports.vapidAuthorization = vapidAuthorization;
+exports.sendWebPush = sendWebPush;
+// RFC 8291 / RFC 8292; one aes128gcm record, no third-party sender service.
+const text = new TextEncoder();
+const encode64 = (a) => { let s = ""; for (const x of a)
+    s += String.fromCharCode(x); return btoa(s).replaceAll("+", "-").replaceAll("/", "_").replace(/=+$/, ""); };
+exports.encode64 = encode64;
+function decode64(s) { if (!/^[A-Za-z0-9_-]+$/.test(s))
+    throw Error("Clave push inválida."); return Uint8Array.from(atob(s.replaceAll("-", "+").replaceAll("_", "/")), c => c.charCodeAt(0)); }
+const join = (...parts) => { const out = new Uint8Array(parts.reduce((n, x) => n + x.length, 0)); let at = 0; for (const p of parts) {
+    out.set(p, at);
+    at += p.length;
+} return out; };
+const bytes = (a) => Uint8Array.from(a);
+function validateSubscription(raw) { const d = raw, u = new URL(d?.endpoint); if (u.protocol !== "https:" || u.username || u.password || u.hash || u.port && u.port !== "443" || !(u.hostname === "fcm.googleapis.com" || u.hostname === "updates.push.services.mozilla.com" || u.hostname.endsWith(".push.services.mozilla.com") || u.hostname === "web.push.apple.com") || u.href.length > 2048)
+    throw Error("Servicio push no compatible."); if (decode64(d.keys?.p256dh).length !== 65 || decode64(d.keys?.p256dh)[0] !== 4 || decode64(d.keys?.auth).length !== 16 || d.expirationTime != null && !Number.isFinite(d.expirationTime))
+    throw Error("Suscripción push incompleta."); return { endpoint: u.href, expirationTime: d.expirationTime ?? null, keys: { p256dh: d.keys.p256dh, auth: d.keys.auth } }; }
+async function hmac(key, data) { return new Uint8Array(await crypto.subtle.sign("HMAC", await crypto.subtle.importKey("raw", bytes(key), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]), bytes(data))); }
+async function encryptPush(sub, payload, override) {
+    if (payload.length > 3000)
+        throw Error("Aviso demasiado grande.");
+    const receiver = decode64(sub.keys.p256dh), auth = decode64(sub.keys.auth), salt = override?.salt ?? crypto.getRandomValues(new Uint8Array(16));
+    if (salt.length !== 16)
+        throw Error("Sal inválida.");
+    let privateKey, publicBytes;
+    if (override) {
+        privateKey = await crypto.subtle.importKey("jwk", override.privateKey, { name: "ECDH", namedCurve: "P-256" }, true, ["deriveBits"]);
+        publicBytes = join(new Uint8Array([4]), decode64(override.privateKey.x), decode64(override.privateKey.y));
+    }
+    else {
+        const pair = await crypto.subtle.generateKey({ name: "ECDH", namedCurve: "P-256" }, true, ["deriveBits"]);
+        privateKey = pair.privateKey;
+        publicBytes = new Uint8Array(await crypto.subtle.exportKey("raw", pair.publicKey));
+    }
+    const peer = await crypto.subtle.importKey("raw", bytes(receiver), { name: "ECDH", namedCurve: "P-256" }, false, []), shared = new Uint8Array(await crypto.subtle.deriveBits({ name: "ECDH", public: peer }, privateKey, 256)), prkKey = await hmac(auth, shared), ikm = await hmac(prkKey, join(text.encode("WebPush: info\0"), receiver, publicBytes, new Uint8Array([1]))), prk = await hmac(salt, ikm), cek = (await hmac(prk, join(text.encode("Content-Encoding: aes128gcm\0"), new Uint8Array([1])))).slice(0, 16), nonce = (await hmac(prk, join(text.encode("Content-Encoding: nonce\0"), new Uint8Array([1])))).slice(0, 12), key = await crypto.subtle.importKey("raw", bytes(cek), "AES-GCM", false, ["encrypt"]), cipher = new Uint8Array(await crypto.subtle.encrypt({ name: "AES-GCM", iv: bytes(nonce) }, key, join(payload, new Uint8Array([2]))));
+    const size = new Uint8Array(4);
+    new DataView(size.buffer).setUint32(0, 4096);
+    return join(salt, size, new Uint8Array([65]), publicBytes, cipher);
+}
+async function vapidAuthorization(endpoint, key, subject, now = Date.now()) { const aud = new URL(endpoint).origin; if (!subject.startsWith("https://") && !subject.startsWith("mailto:"))
+    throw Error("Contacto VAPID inválido."); const header = (0, exports.encode64)(text.encode(JSON.stringify({ typ: "JWT", alg: "ES256" }))), body = (0, exports.encode64)(text.encode(JSON.stringify({ aud, exp: Math.floor(now / 1000) + 3600, sub: subject }))), input = header + "." + body, privateKey = await crypto.subtle.importKey("jwk", key, { name: "ECDSA", namedCurve: "P-256" }, false, ["sign"]), signature = new Uint8Array(await crypto.subtle.sign({ name: "ECDSA", hash: "SHA-256" }, privateKey, text.encode(input))); if (signature.length !== 64)
+    throw Error("Firma VAPID incompatible."); const pub = (0, exports.encode64)(join(new Uint8Array([4]), decode64(key.x), decode64(key.y))); return `vapid t=${input}.${(0, exports.encode64)(signature)}, k=${pub}`; }
+async function sendWebPush(sub, payload, key, subject) { validateSubscription(sub); const body = await encryptPush(sub, text.encode(JSON.stringify(payload))), authorization = await vapidAuthorization(sub.endpoint, key, subject); const r = await fetch(sub.endpoint, { method: "POST", redirect: "manual", signal: AbortSignal.timeout(12000), headers: { Authorization: authorization, "Content-Encoding": "aes128gcm", "Content-Type": "application/octet-stream", TTL: "60", Urgency: "normal" }, body: bytes(body) }); return { accepted: r.status === 201 || r.status === 202 || r.status === 200, expired: r.status === 404 || r.status === 410, httpStatus: r.status, retryAfter: r.headers.get("Retry-After") }; }
+
+};
 function get(id){if(cache[id])return cache[id].exports;if(!modules[id])throw Error("Unknown module "+id);const m={exports:{}};cache[id]=m;modules[id](p=>get(require("node:path").posix.normalize(require("node:path").posix.join(require("node:path").posix.dirname(id),p))),m,m.exports);return m.exports;}
-module.exports={engine:get("lib/xau/engine"),lifecycle:get("lib/xau/xauLifecycle"),audit:get("lib/xau/xauAuditTypes"),macro:get("lib/xau/macroContext"),feed:get("lib/biquote-feed"),sealed:get("lib/sealed-snapshot")};
+module.exports={engine:get("lib/xau/engine"),lifecycle:get("lib/xau/xauLifecycle"),audit:get("lib/xau/xauAuditTypes"),macro:get("lib/xau/macroContext"),feed:get("lib/biquote-feed"),sealed:get("lib/sealed-snapshot"),push:get("lib/web-push")};

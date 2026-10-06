@@ -30,6 +30,8 @@ jobs:
         run: |
           node runner/test.cjs
           node runner/runner.cjs
+          node runner/push-test.cjs
+          node runner/push-runner.cjs prepare
       - name: Commit only encrypted observations
         run: |
           set -euo pipefail
@@ -39,8 +41,15 @@ jobs:
           if git diff --cached --quiet; then exit 0; fi
           git commit -m 'Record encrypted XAU observation'
           git push origin HEAD:main
-      - name: Optional authenticated delivery callback
+      - name: Deliver only durably claimed recent notifications
         env:
-          LIBI_XAU_SITE_TOKEN: ${{ secrets.LIBI_XAU_SITE_TOKEN }}
-        run: node runner/delivery.cjs
+          LIBI_XAU_WAKE_SECRET: ${{ secrets.LIBI_XAU_WAKE_SECRET }}
+        run: node runner/push-runner.cjs send
+      - name: Preserve private delivery outcomes
+        run: |
+          set -euo pipefail
+          git add state/
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Preserve encrypted notification outcomes'
+          git push origin HEAD:main
       # No calls to suspended Floot, paid data plans, broker orders or raw public feed.
