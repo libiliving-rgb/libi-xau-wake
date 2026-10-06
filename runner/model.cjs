@@ -828,7 +828,7 @@ catch {
     return null;
 } }
 async function json(url) { let r; try {
-    r = await fetch(url, { signal: AbortSignal.timeout(12000), redirect: "error" });
+    r = await fetch(url, { signal: AbortSignal.timeout(12000), redirect: "manual" });
 }
 catch {
     throw new BiquoteError("No se pudo acceder a biquote. Cobertura desconocida.");
