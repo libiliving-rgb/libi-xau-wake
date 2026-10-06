@@ -43,7 +43,7 @@ jobs:
           result = data.get("result", {})
           status = result.get("status")
           allowed = {"market-closed", "stale-data", "stale-scan", "active-trade",
-                     "triggered", "pending-entry", "invalidated", "ambiguous",
+                     "triggered", "pending-entry", "invalidated", "resolved", "ambiguous",
                      "no-action", "new-signal", "TP", "SL", "tp-hit", "sl-hit"}
           if data.get("ok") is not True or status not in allowed:
               raise SystemExit("Unexpected wake response; inspect the app audit.")
