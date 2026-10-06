@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-06T19:03:00Z",
+  "checkedAt": "2026-10-06T19:07:00Z",
   "siteURL": "https://libi-xau-gratis.libiliving.chatgpt.site",
   "siteVersion": 10,
   "siteCommit": "6012943d8c5707094896c72b5c5117ab12b63143",
@@ -16,9 +16,10 @@
   },
   "connection": {
     "method": "sealed configuration from owner-private Site to Actions-owned recipient, no Site/Floot access credential",
-    "emptyConfigurationVerification": "prepared",
+    "emptyConfigurationVerification": "Verified in actual run 37516311045: prepared and send phases configured true, zero devices, zero sends; device permission/receipt not verified.",
     "deviceSetup": "User must activate in Settings and test on their device, then authorized agent syncs sealed config again.",
-    "renewal": "expires after 7 days; synchronize after every subscription change"
+    "renewal": "expires after 7 days; synchronize after every subscription change",
+    "verifiedRun": 37516311045
   },
   "history": {
     "coverage": "partial-floot-history-pending",
