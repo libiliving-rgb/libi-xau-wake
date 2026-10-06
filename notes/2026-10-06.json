@@ -1,14 +1,14 @@
 {
-  "checkedAt": "2026-10-06T19:07:00Z",
+  "checkedAt": "2026-10-06T19:20:53.145903+00:00",
   "siteURL": "https://libi-xau-gratis.libiliving.chatgpt.site",
-  "siteVersion": 10,
-  "siteCommit": "6012943d8c5707094896c72b5c5117ab12b63143",
-  "siteDeployment": "appgdep_6ac5458d848c8191af276e589355e2d3",
+  "siteVersion": 11,
+  "siteCommit": "289b2d4f29968d2f3c7c6262a6af768efee1c19f",
+  "siteDeployment": "appgdep_6ac548be37648191b9f6e4211bb9318e",
   "environmentRevision": 5,
   "tests": {
     "prior": 115,
-    "sealedPush": 18,
-    "total": 133,
+    "sealedPush": 19,
+    "total": 134,
     "typecheck": "passed",
     "build": "passed",
     "productionPushConnection": 7,
@@ -18,8 +18,9 @@
     "method": "sealed configuration from owner-private Site to Actions-owned recipient, no Site/Floot access credential",
     "emptyConfigurationVerification": "Verified in actual run 37516311045: prepared and send phases configured true, zero devices, zero sends; device permission/receipt not verified.",
     "deviceSetup": "User must activate in Settings and test on their device, then authorized agent syncs sealed config again.",
-    "renewal": "expires after 7 days; synchronize after every subscription change",
-    "verifiedRun": 37516311045
+    "renewal": "expiresAt=null; valid until revocation or key/epoch rotation. Synchronize after every subscription change.",
+    "verifiedRun": 37516311045,
+    "latestTechnicalRun": 37517279788
   },
   "history": {
     "coverage": "partial-floot-history-pending",
@@ -35,5 +36,16 @@
   },
   "paidActions": [],
   "publicModelChanged": false,
-  "productionFixtures": 0
+  "productionFixtures": 0,
+  "actualHistory": {
+    "pending": 1,
+    "active": 0,
+    "invalidated": 1,
+    "events": 15
+  },
+  "remainingUserActions": [
+    "Activate and test on actual phone, then sync encrypted configuration and verify closed-app delivery.",
+    "Obtain legitimate original Floot ledger export without paying/top-up.",
+    "Optional external scheduler requires user's free cron-job.org account and a narrowly scoped GitHub Actions write credential; prepared only."
+  ]
 }
