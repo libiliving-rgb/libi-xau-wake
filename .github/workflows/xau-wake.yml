@@ -1,55 +1,42 @@
 name: LiBi XAU Wake
 
 on:
-  # Automatic calls paused: Floot hosting is suspended; replacement writer not verified yet.
+  push:
+    paths:
+      - '.github/workflows/xau-wake.yml'
+      - 'runner/**'
+  schedule:
+    - cron: '2-57/5 * * * *'
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: libi-xau-state
+  cancel-in-progress: false
 
 jobs:
   wake:
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    timeout-minutes: 3
     steps:
-      - name: Wake LiBi XAU
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - name: Calculate and preserve encrypted state
         env:
           LIBI_XAU_WAKE_SECRET: ${{ secrets.LIBI_XAU_WAKE_SECRET }}
         run: |
+          node runner/test.cjs
+          node runner/runner.cjs
+      - name: Commit only encrypted observations
+        run: |
           set -euo pipefail
-          if [ -z "${LIBI_XAU_WAKE_SECRET:-}" ]; then
-            echo "Missing GitHub Actions secret: LIBI_XAU_WAKE_SECRET"
-            exit 1
-          fi
-          http_code=$(curl --silent --show-error --max-time 60 \
-            --output /tmp/libi-xau-response.txt \
-            --write-out "%{http_code}" \
-            --request POST \
-            --header "Authorization: Bearer ${LIBI_XAU_WAKE_SECRET}" \
-            --header "Content-Type: application/json" \
-            https://libi-xau.floot.app/_api/xau-wake)
-          echo "LiBi XAU wake HTTP ${http_code} at $(date -u +%FT%TZ)"
-          if [ "${http_code}" -lt 200 ] || [ "${http_code}" -ge 300 ]; then
-            echo "Wake request failed; raw response omitted."
-            exit 1
-          fi
-
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-          response = json.loads(Path("/tmp/libi-xau-response.txt").read_text())
-          data = response.get("json", response)
-          result = data.get("result", {})
-          status = result.get("status")
-          allowed = {"market-closed", "stale-data", "stale-scan", "active-trade",
-                     "triggered", "pending-entry", "invalidated", "resolved", "ambiguous",
-                     "no-action", "new-signal", "TP", "SL", "tp-hit", "sl-hit"}
-          if data.get("ok") is not True or status not in allowed:
-              raise SystemExit("Unexpected wake response; inspect the app audit.")
-          print("LiBi XAU scan status:", status)
-          if status == "stale-data":
-              print("::error::The wake ran, but market data were stale.")
-              raise SystemExit(1)
-          if status == "stale-scan":
-              print("::warning::An older concurrent scan was ignored.")
-          PY
+          git config user.name 'LiBi XAU tracker'
+          git config user.email 'libi-xau-tracker@users.noreply.github.com'
+          git add state/
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Record encrypted XAU observation'
+          git push origin HEAD:main
+      # No calls to suspended Floot, paid data plans, broker orders or raw public feed.

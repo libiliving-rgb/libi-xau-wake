@@ -1,0 +1,14 @@
+{
+  "version": "xau-github-runner-0.1.0",
+  "originalEngineHash": "b394e287402ed9bf7449156962b7a4c48404676fe9d7a0e06d4cb7b8b30387ac",
+  "hashes": {
+    "lib/xau/engine.ts": "78649805191db7fa01c227c88cd493e467ae50309128308794b0826473870145",
+    "lib/xau/xauMarketCriteria.ts": "09fdcbe2bb4d950f2a74aca91d0fc6ea0d05fa8018619ec55e948e8492bee840",
+    "lib/xau/xauPoi.ts": "a8746f4b57600b47e70a967ae0edc408866c0ae391fd1a3952f72f6908cade6c",
+    "lib/xau/xauAuditTypes.ts": "668547717353b06846c15014d0c29d62689fd62a6c053e16ff0912a7cad76f47",
+    "lib/xau/xauLifecycle.ts": "1bc3d69e7a155644a92ca16b9636ee47cd9cfc2c1b59aeef2ed793d26a9add61",
+    "lib/xau/macroContext.ts": "2421e7208b2699bf3eb07ce7c00dca5dfdafe9054b165d498758a8493f9708c7",
+    "lib/biquote-feed.ts": "a65892d01d40ce024a1f140ab1db0b3dd0faddfc632d1e48b242e4ee140772f3",
+    "lib/sealed-snapshot.ts": "8290091f50266f181f3691a683255d279f881e01ce7cef7a8c20da75a3749f8d"
+  }
+}
