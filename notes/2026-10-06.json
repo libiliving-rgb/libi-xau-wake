@@ -1,0 +1,38 @@
+{
+  "checkedAt": "2026-10-06T19:03:00Z",
+  "siteURL": "https://libi-xau-gratis.libiliving.chatgpt.site",
+  "siteVersion": 10,
+  "siteCommit": "6012943d8c5707094896c72b5c5117ab12b63143",
+  "siteDeployment": "appgdep_6ac5458d848c8191af276e589355e2d3",
+  "environmentRevision": 5,
+  "tests": {
+    "prior": 115,
+    "sealedPush": 18,
+    "total": 133,
+    "typecheck": "passed",
+    "build": "passed",
+    "productionPushConnection": 7,
+    "realDeviceDelivery": false
+  },
+  "connection": {
+    "method": "sealed configuration from owner-private Site to Actions-owned recipient, no Site/Floot access credential",
+    "emptyConfigurationVerification": "prepared",
+    "deviceSetup": "User must activate in Settings and test on their device, then authorized agent syncs sealed config again.",
+    "renewal": "expires after 7 days; synchronize after every subscription change"
+  },
+  "history": {
+    "coverage": "partial-floot-history-pending",
+    "originalDataUnavailable": true
+  },
+  "punctuality": {
+    "nominalMinutes": 5,
+    "observedScheduledGapsMinutes": [
+      25.108,
+      23.172
+    ],
+    "guaranteed": false
+  },
+  "paidActions": [],
+  "publicModelChanged": false,
+  "productionFixtures": 0
+}
