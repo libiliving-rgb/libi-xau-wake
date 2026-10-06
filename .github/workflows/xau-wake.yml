@@ -2,7 +2,7 @@ name: LiBi XAU Wake
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '2-57/5 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -29,8 +29,28 @@ jobs:
             --header "Authorization: Bearer ${LIBI_XAU_WAKE_SECRET}" \
             --header "Content-Type: application/json" \
             https://libi-xau.floot.app/_api/xau-wake)
-          echo "LiBi XAU wake HTTP ${http_code}"
+          echo "LiBi XAU wake HTTP ${http_code} at $(date -u +%FT%TZ)"
           if [ "${http_code}" -lt 200 ] || [ "${http_code}" -ge 300 ]; then
-            cat /tmp/libi-xau-response.txt
+            echo "Wake request failed; raw response omitted."
             exit 1
           fi
+
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          response = json.loads(Path("/tmp/libi-xau-response.txt").read_text())
+          data = response.get("json", response)
+          result = data.get("result", {})
+          status = result.get("status")
+          allowed = {"market-closed", "stale-data", "stale-scan", "active-trade",
+                     "triggered", "pending-entry", "invalidated", "ambiguous",
+                     "no-action", "new-signal", "TP", "SL", "tp-hit", "sl-hit"}
+          if data.get("ok") is not True or status not in allowed:
+              raise SystemExit("Unexpected wake response; inspect the app audit.")
+          print("LiBi XAU scan status:", status)
+          if status == "stale-data":
+              print("::error::The wake ran, but market data were stale.")
+              raise SystemExit(1)
+          if status == "stale-scan":
+              print("::warning::An older concurrent scan was ignored.")
+          PY
