@@ -17,3 +17,5 @@ Los avisos usan el cierre del intervalo efectivo de cinco minutos como fecha lí
 La pantalla de la app recibe precios XAUUSD por el hub SignalR/WebSocket gratuito mientras está visible. Valida bid/ask/mid, fecha, símbolo y secuencia; reconecta y vuelve a suscribirse. Si se interrumpe, muestra la consulta de respaldo de 60 segundos, con control de caducidad. Esto no modifica el motor ni implica ejecución tick a tick. `runner/stream-probe.cjs` verifica integración tras cambios de código sin modificar decisiones ni guardar ticks sin cifrar.
 
 Activación pendiente del programador externo: [instrucciones gratuitas cada cinco minutos](notes/free-scheduler-setup.md).
+
+La referencia directa Git HTTP (`info/refs?service=git-upload-pack`) es ahora la primera opción del Site: solo anuncios de referencias y SHA, sin clonar objetos ni consumir REST. Se validan los paquetes y la rama main. El archivo publicado queda como respaldo, y su fecha de publicación limita la frescura para no presentar una caché antigua como recién verificada. La prueba de integración del 7 de octubre recibió 11 ticks válidos en 12 segundos; no prueba puntualidad del programador.
