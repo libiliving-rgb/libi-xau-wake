@@ -24,3 +24,5 @@ La programación nativa de GitHub queda como respaldo: no garantiza cinco minuto
 Si el trabajo devuelve 401/403 al caducar el token, renovarlo en el encabezado. La pantalla conserva la hora real de la última decisión y avisa cuando queda antigua. Los eventos observados en velas históricas mantienen su intervalo y la hora de registro; los avisos de entrada antiguos o de planes ya terminados se descartan, pero sus resultados se conservan para evaluación.
 
 Referencias: <https://cron-job.org/en/faq/>; <https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event>; <https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule>.
+
+La referencia directa de Git por HTTP (`info/refs?service=git-upload-pack`) es la primera opción del Site: solo anuncios de nombres y SHA, sin clonar objetos ni consumir REST. Se valida el encuadre pkt-line y main. `state/head.json` queda como respaldo; su hora de publicación limita la frescura para evitar que una caché pública antigua parezca recién comprobada.
