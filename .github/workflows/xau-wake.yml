@@ -19,6 +19,8 @@ concurrency:
 
 jobs:
   wake:
+    # Fail closed before allocating a runner: private repositories can incur charges.
+    if: ${{ toJSON(github.event.repository.private) == 'false' }}
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
