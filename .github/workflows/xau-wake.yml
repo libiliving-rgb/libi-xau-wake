@@ -25,6 +25,10 @@ jobs:
       - uses: actions/checkout@v7
         with:
           ref: main
+      - name: Check the foreground price stream independently of model decisions
+        if: github.event_name == 'push'
+        continue-on-error: true
+        run: node runner/stream-probe.cjs
       - name: Calculate and preserve encrypted state
         env:
           LIBI_XAU_WAKE_SECRET: ${{ secrets.LIBI_XAU_WAKE_SECRET }}
@@ -49,6 +53,7 @@ jobs:
           git commit -m 'Record encrypted XAU observation'
           git push origin HEAD:main
       - name: Deliver only durably claimed recent notifications
+        continue-on-error: true
         env:
           LIBI_XAU_WAKE_SECRET: ${{ secrets.LIBI_XAU_WAKE_SECRET }}
         run: node runner/push-runner.cjs send
@@ -58,5 +63,12 @@ jobs:
           git add state/
           if git diff --cached --quiet; then exit 0; fi
           git commit -m 'Preserve encrypted notification outcomes'
+          git push origin HEAD:main
+      - name: Publish the committed snapshot reference without REST polling
+        run: |
+          set -euo pipefail
+          node runner/publish-reference.cjs "$(git rev-parse HEAD)"
+          git add state/head.json
+          git commit -m 'Publish immutable encrypted snapshot reference'
           git push origin HEAD:main
       # No calls to suspended Floot, paid data plans, broker orders or raw public feed.

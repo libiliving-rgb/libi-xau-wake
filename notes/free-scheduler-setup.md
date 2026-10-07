@@ -1,17 +1,26 @@
-# Programador gratuito alternativo: preparado, sin activar
+# Activación del seguimiento gratuito cada cinco minutos
 
-El cron nativo de GitHub ha producido intervalos reales de 23–25 min. El workflow ya acepta workflow_dispatch. Una alternativa gratuita es cron-job.org, que admite POST, cabeceras y frecuencias de un minuto; se propone empezar con cinco minutos. Su FAQ también declara que no garantiza puntualidad: https://cron-job.org/en/faq/ (consultada 06-10-2026).
+La sincronización del Site lee `state/head.json` y los archivos cifrados por SHA. No consume la API REST de GitHub. El registro mantiene decisiones, eventos, barras, ticks y variantes separados; no cambia las fórmulas originales ni aprende parámetros en producción.
 
-La activación requiere una cuenta gratuita del usuario y un token GitHub fine-grained, limitado SOLO a `libiliving-rgb/libi-xau-wake` con permiso de repositorio Actions: read/write. Nunca dar Contents/Secrets/Administration ni usar un token de Floot/Sites. Crear y guardar el token únicamente en la consola privada del programador; no pegarlo en conversación, código, notas o URLs. Caducidad explícita y revocación al retirar el programador. No se ha creado una cuenta ni un programador externo durante este trabajo.
+La programación nativa de GitHub queda como respaldo: no garantiza cinco minutos. El programador externo está preparado, **pendiente de activación en una cuenta del propietario**. No se ha creado ninguna cuenta ni contratado servicios. cron-job.org permite programación gratuita cada minuto; se propone cada cinco. Tampoco ofrece garantía de puntualidad.
 
-Configuración exacta revisable:
-- URL: https://api.github.com/repos/libiliving-rgb/libi-xau-wake/actions/workflows/xau-wake.yml/dispatches
-- Método: POST
-- Cabeceras: Accept = application/vnd.github+json; Content-Type = application/json; X-GitHub-Api-Version = 2026-03-10; Authorization = Bearer [token limitado, solo en campo privado]
-- Cuerpo: {"ref":"main"}
-- Intervalo inicial: cinco minutos, sin bucles ni reintentos inmediatos.
-- Validación: HTTP de aceptación 200/204, run workflow_dispatch real finalizado y persistido, horas reales, latencia de barras y avisos. HTTP de aceptación por sí solo no prueba puntualidad ni entrega.
+1. Crear o abrir una cuenta gratuita en <https://console.cron-job.org/signup> y confirmar el correo.
+2. En <https://github.com/settings/personal-access-tokens/new>, crear un token fine-grained con propietario `libiliving-rgb`, **Only select repositories → libi-xau-wake** y permiso **Actions: Read and write**. Usar una caducidad explícita. Metadata se incluye automáticamente. No conceder Contents, Secrets ni Administration. No escribir el token en la conversación, el repositorio, el cuerpo ni la URL; va exclusivamente en el encabezado privado del programador.
+3. Crear un trabajo `LiBi XAU · cinco minutos`, activado, cada cinco minutos, con este destino y configuración avanzada:
 
-Mantener el cron nativo hasta medir el externo y resolver cualquier concurrencia; el grupo único y las claves de eventos protegen el estado. Después elegir un solo disparador y dejar el fallback explícito. No asumir que un disparo manual representa la cadencia programada; separar en el análisis `workflow_dispatch` de `schedule`.
+| Campo | Valor |
+|---|---|
+| URL | `https://api.github.com/repos/libiliving-rgb/libi-xau-wake/actions/workflows/xau-wake.yml/dispatches` |
+| Método | `POST` |
+| Accept | `application/vnd.github+json` |
+| Content-Type | `application/json` |
+| X-GitHub-Api-Version | `2026-03-10` |
+| Authorization | `Bearer ` seguido del token privado |
+| Cuerpo | `{"ref":"main"}` |
 
-Fuentes oficiales: https://docs.github.com/en/rest/actions/workflows . Falta acceso a la cuenta del programador; no se promete protección intradía ni puntualidad de cinco minutos.
+4. Ejecutar una prueba desde el programador. La respuesta de GitHub debe ser 200 o 204; eso solo acredita aceptación del disparo. Verificar que aparece una ejecución `workflow_dispatch` completada en <https://github.com/libiliving-rgb/libi-xau-wake/actions/workflows/xau-wake.yml>, que cambian `state/head.json` y la revisión cifrada, y que la app importa esa revisión sin referencia manual.
+5. Medir al menos seis disparos consecutivos: intervalos de observación y latencia de última vela. No presentar cinco minutos como verificados antes de medirlos. Mantener la programación nativa de respaldo durante la comprobación; el grupo de concurrencia conserva un solo escritor. El cálculo evita archivar dos veces una entrada idéntica. Sin bucles de reintento inmediato.
+
+Si el trabajo devuelve 401/403 al caducar el token, renovarlo en el encabezado. La pantalla conserva la hora real de la última decisión y avisa cuando queda antigua. Los eventos observados en velas históricas mantienen su intervalo y la hora de registro; los avisos de entrada antiguos o de planes ya terminados se descartan, pero sus resultados se conservan para evaluación.
+
+Referencias: <https://cron-job.org/en/faq/>; <https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event>; <https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule>.
