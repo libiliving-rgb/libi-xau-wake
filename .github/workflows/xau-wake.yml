@@ -30,6 +30,7 @@ jobs:
           LIBI_XAU_WAKE_SECRET: ${{ secrets.LIBI_XAU_WAKE_SECRET }}
         run: |
           node runner/test.cjs
+          node runner/variants-test.cjs
           node runner/runner.cjs
       - name: Prepare private delivery claims
         continue-on-error: true

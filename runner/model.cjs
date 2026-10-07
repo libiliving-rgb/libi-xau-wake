@@ -452,10 +452,10 @@ exports.NEWS_RISK_POLICY = {
     scope: "Provisional risk windows, not a validated strategy; independent lifecycle trial pending"
 };
 exports.MACRO_SNAPSHOT = {
-    "version": "xau-macro-snapshot-0.1.0",
+    "version": "xau-macro-snapshot-0.1.1",
     "instrument": "XAU/USD",
     "firstObservedAt": 1791268258511,
-    "updatedAt": 1791268258511,
+    "updatedAt": 1791354326609,
     "feedActive": false,
     "coverage": "partial",
     "maxAgeMs": 21600000,
@@ -466,29 +466,29 @@ exports.MACRO_SNAPSHOT = {
             "name": "BLS",
             "url": "https://www.bls.gov/schedule/2026/10_sched.htm",
             "sourceUpdatedAt": "2026-02-18",
-            "observedAt": 1791268258511,
+            "observedAt": 1791354326609,
             "coverage": "Calendario nacional de octubre; selección de publicaciones materiales"
         },
         {
             "name": "BEA",
             "url": "https://www.bea.gov/news/schedule",
-            "sourceUpdatedAt": "2026-10-06",
-            "observedAt": 1791268258511,
+            "sourceUpdatedAt": "2026-10-07",
+            "observedAt": 1791354326609,
             "coverage": "Calendario de comercio, PIB e ingresos/gastos; no consenso"
         },
         {
             "name": "Federal Reserve",
             "url": "https://www.federalreserve.gov/newsevents/2026-october.htm",
             "sourceUpdatedAt": "2025-06-24",
-            "observedAt": 1791268258511,
+            "observedAt": 1791354326609,
             "coverage": "Calendario del Board: actas, FOMC y comparecencias; no todos los bancos regionales"
         },
         {
             "name": "DOL",
             "url": "https://www.dol.gov/ui/data.pdf",
             "sourceUpdatedAt": "2026-10-01",
-            "observedAt": 1791268258511,
-            "coverage": "Última publicación de solicitudes de desempleo verificada; siguiente fecha exacta pendiente"
+            "observedAt": 1791354326609,
+            "coverage": "Publicación del 1 de octubre consultada el 7; siguiente fecha exacta no confirmada en esta fuente"
         }
     ],
     "missing": [
@@ -558,7 +558,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1791396000000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791268258511,
+            "updatedAt": 1791354326609,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -574,7 +574,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1791448200000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791268258511,
+            "updatedAt": 1791354326609,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -590,7 +590,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1791981000000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791268258511,
+            "updatedAt": 1791354326609,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -606,7 +606,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1792000800000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791268258511,
+            "updatedAt": 1791354326609,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -622,7 +622,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1792067400000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791268258511,
+            "updatedAt": 1791354326609,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -638,7 +638,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1793210400000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791268258511,
+            "updatedAt": 1791354326609,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -654,7 +654,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1793212200000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791268258511,
+            "updatedAt": 1791354326609,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -670,7 +670,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1793277000000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791268258511,
+            "updatedAt": 1791354326609,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -686,7 +686,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1793277000000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791268258511,
+            "updatedAt": 1791354326609,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -702,7 +702,23 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1793363400000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791268258511,
+            "updatedAt": 1791354326609,
+            "consensus": null,
+            "surprise": null,
+            "instrument": "XAU/USD"
+        },
+        {
+            "id": "consumer-credit-20261007",
+            "title": "Crédito al consumo de EE. UU.",
+            "kind": "other",
+            "source": "Federal Reserve",
+            "url": "https://www.federalreserve.gov/newsevents/2026-october.htm",
+            "sourceTimezone": "America/New_York",
+            "sourceLocalTime": "2026-10-07T15:00:00",
+            "scheduledAt": 1791399600000,
+            "actualPublishedAt": null,
+            "firstObservedAt": 1791354326609,
+            "updatedAt": 1791354326609,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -710,34 +726,34 @@ exports.MACRO_SNAPSHOT = {
     ],
     "reports": [
         {
-            "id": "reuters-gold-20261006",
-            "title": "Dólar y rendimientos presionan el oro; expectativas de tipos también influyen.",
+            "id": "reuters-gold-20261007",
+            "title": "Reuters: el dólar presiona el oro mientras el mercado espera las actas de la Fed.",
             "source": "Reuters",
-            "url": "https://www.reuters.com/world/india/gold-inches-lower-firmer-dollar-higher-yields-weigh-2026-10-06/",
-            "publishedAt": 1791252900000,
+            "url": "https://www.reuters.com/world/india/gold-edges-lower-with-focus-fed-minutes-rate-path-clues-2026-10-07/",
+            "publishedAt": 1791339480000,
             "eventAt": null,
             "sourceUpdatedAt": null,
-            "firstObservedAt": 1791268258511,
-            "updatedAt": 1791268258511,
-            "ingestionLagMs": 15358511,
+            "firstObservedAt": 1791354326609,
+            "updatedAt": 1791354326609,
+            "ingestionLagMs": 14846609,
             "category": "economic",
             "instrument": "XAU/USD",
-            "coverage": "Consulta puntual; hora exacta de la última revisión de la fuente desconocida"
+            "coverage": "Consulta puntual. Hora de publicación con precisión de minuto; hora de última revisión desconocida."
         },
         {
-            "id": "reuters-hormuz-20261005",
-            "title": "Reuters recoge incidentes marítimos en Ormuz; su impacto sobre el oro no tiene una dirección fija.",
+            "id": "reuters-markets-20261007",
+            "title": "Reuters relaciona el avance del petróleo con tensiones saudíes-hutíes y una tormenta en el golfo de México; el efecto sobre el oro no tiene dirección fija.",
             "source": "Reuters",
-            "url": "https://www.reuters.com/business/energy/middle-east-crude-oil-exports-exceed-pre-war-levels-tanker-attacks-increase-2026-10-05/",
-            "publishedAt": 1791162540000,
+            "url": "https://www.reuters.com/world/china/global-markets-global-markets-2026-10-07/",
+            "publishedAt": 1791340800000,
             "eventAt": null,
             "sourceUpdatedAt": null,
-            "firstObservedAt": 1791268258511,
-            "updatedAt": 1791268258511,
-            "ingestionLagMs": 105718511,
+            "firstObservedAt": 1791354326609,
+            "updatedAt": 1791354326609,
+            "ingestionLagMs": 13526609,
             "category": "geopolitical",
             "instrument": "XAU/USD",
-            "coverage": "Informe contrastado en la fuente; no alerta instantánea ni hora exacta de shock"
+            "coverage": "Contexto confirmado en informe fechado. No se conoce el instante del shock ni se vigila continuamente."
         }
     ]
 };
@@ -759,6 +775,122 @@ function evaluateMacroRisk(now = Date.now(), snapshot = exports.MACRO_SNAPSHOT) 
         next, windows, reports: known ? snapshot.reports.filter(r => r.firstObservedAt <= now) : [],
         parameters: exports.NEWS_RISK_POLICY, missing: snapshot.missing,
     };
+}
+
+};
+modules["lib/xau/variants"]=(require,module,exports)=>{
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PARALLEL_POLICY = exports.VARIANT_IDS = void 0;
+exports.alignedPlan = alignedPlan;
+exports.variantDecisions = variantDecisions;
+exports.emptyComparison = emptyComparison;
+exports.advanceComparison = advanceComparison;
+const xauAuditTypes_1 = require("./xauAuditTypes");
+const xauLifecycle_1 = require("./xauLifecycle");
+const xauPoi_1 = require("./xauPoi");
+const macroContext_1 = require("./macroContext");
+exports.VARIANT_IDS = ["V0", "V1", "V2", "N0"];
+exports.PARALLEL_POLICY = {
+    trialId: "xau-parallel-0.1.0", mode: "prospective-shadow", publicSignalsChanged: false,
+    lifecycleVersion: xauAuditTypes_1.LIFECYCLE_VERSION, referenceModelVersion: xauAuditTypes_1.MODEL_VERSION,
+    commonPlan: xauAuditTypes_1.MODEL_POLICY, poi: xauPoi_1.POI_POLICY, news: macroContext_1.NEWS_RISK_POLICY,
+    variants: {
+        V0: { version: "xau-shadow-v0-0.1.0", rule: "Frozen public model; independent fresh lifecycle." },
+        V1: { version: "xau-shadow-v1-0.1.0", rule: "Strict EMA 9/21 5m and 15m alignment plus same-direction structure. RSI/momentum/sweep/DXY recorded, never authorize." },
+        V2: { version: "xau-shadow-v2-0.1.0", rule: "Reference plus existing frozen POI side veto; confirmed zone and target room." },
+        N0: { version: "xau-shadow-news-0.1.0", rule: "Separate reference trial; veto new/pending entries in known calendar windows or stale/unknown snapshot. Continue activated plans unchanged. No directional news points or retrospective shock attribution." },
+    },
+    clock: "Actual observation times; not ideal 5m replay", initialization: "All candidates start empty at first observation; no copying historical public operations.",
+};
+function noEntry(base, version) {
+    return { ...base, modelVersion: version, side: "NO TRADE", entryLow: null, entryHigh: null, stop: null, tp: null, rr: null, quality: "—" };
+}
+/** Uses the identical frozen level formulas; score is diagnostic only for V1. */
+function alignedPlan(base, bars, side, version) {
+    const atr = base.atr, anchor = base.emaFast5;
+    if (!Number.isFinite(atr) || atr <= 0 || !Number.isFinite(anchor) || bars.length < 12)
+        return noEntry(base, version);
+    const entryLow = side === "BUY" ? anchor - atr * 0.18 : anchor - atr * 0.05;
+    const entryHigh = side === "BUY" ? anchor + atr * 0.05 : anchor + atr * 0.18;
+    const mid = (entryLow + entryHigh) / 2;
+    const swingLow = Math.min(...bars.slice(-12).map(b => b.low)), swingHigh = Math.max(...bars.slice(-12).map(b => b.high));
+    const stop = side === "BUY" ? Math.min(swingLow - atr * 0.15, mid - atr * 1.05) : Math.max(swingHigh + atr * 0.15, mid + atr * 1.05);
+    const risk = Math.abs(mid - stop), tp = side === "BUY" ? mid + risk * 2 : mid - risk * 2;
+    return { ...base, modelVersion: version, side, entryLow, entryHigh, stop, tp, rr: 2, quality: "—" };
+}
+function variantDecisions(base, bars5, bars15, context, observedAt) {
+    return exports.VARIANT_IDS.map(variant => {
+        const version = exports.PARALLEL_POLICY.variants[variant].version, reasons = [];
+        let signal = { ...base, modelVersion: version };
+        if (base.dataQuality?.ok === false) {
+            signal = noEntry(base, version);
+            reasons.push("Los datos no superan las comprobaciones comunes.");
+        }
+        else if (variant === "V1") {
+            const buy = base.emaFast5 > base.emaSlow5 && base.emaFast15 > base.emaSlow15 && base.structure === "ALCISTA";
+            const sell = base.emaFast5 < base.emaSlow5 && base.emaFast15 < base.emaSlow15 && base.structure === "BAJISTA";
+            signal = buy || sell ? alignedPlan(base, bars5, buy ? "BUY" : "SELL", version) : noEntry(base, version);
+            signal.poi = (0, xauPoi_1.assessPoi)(signal, bars15, observedAt);
+            reasons.push(buy || sell ? "Tendencia 5m/15m y estructura alineadas. Los demás factores no autorizan la entrada." : "Falta alineación completa de tendencia 5m/15m y estructura.");
+        }
+        else if (variant === "V2") {
+            const poi = (0, xauPoi_1.assessPoi)(base, bars15, observedAt);
+            signal = { ...signal, poi };
+            reasons.push(...poi.reasons);
+            if (poi.side === "NO TRADE")
+                signal = noEntry(signal, version);
+        }
+        else if (variant === "N0") {
+            if (!context.fresh || context.sourceObservedAt == null || context.sourceObservedAt > observedAt) {
+                signal = noEntry(base, version);
+                reasons.push("Cobertura del calendario caducada o todavía desconocida.");
+            }
+            else if (context.windows.length) {
+                signal = noEntry(base, version);
+                reasons.push("Ventana provisional de evento conocido; se descarta una entrada nueva.");
+            }
+            else
+                reasons.push("Referencia con calendario parcial vigente; sin protección de noticias instantáneas ni shocks no observados.");
+        }
+        else
+            reasons.push("Referencia técnica congelada; estado independiente del plan público.");
+        return { variant, version, signal, reasons, diagnostics: { referenceScore: base.score, referenceSide: base.side, macroObservedAt: context.sourceObservedAt, macroFresh: context.fresh, macroStatus: context.status, calendarEventIds: context.windows.map(e => e.id) } };
+    });
+}
+function emptyComparison(observedAt, policyHash) {
+    return { trialId: exports.PARALLEL_POLICY.trialId, policyHash, startedAt: observedAt, revision: 0, lastScanId: null, lastObservedAt: 0, states: Object.fromEntries(exports.VARIANT_IDS.map(variant => [variant, { variant, version: exports.PARALLEL_POLICY.variants[variant].version, status: "idle", signalHash: null, side: null, payload: null, updatedAt: 0 }])) };
+}
+function advanceComparison(previous, decisions, bars5, observedAt, scanId, policyHash, newId) {
+    const state = previous ?? emptyComparison(observedAt, policyHash);
+    if (state.trialId !== exports.PARALLEL_POLICY.trialId || state.policyHash !== policyHash)
+        throw Error("Los parámetros del ensayo cambiaron. No se reinicia ni mezcla su historial.");
+    if (state.lastScanId === scanId || observedAt <= state.lastObservedAt)
+        return { state, decisions: [], events: [] };
+    if (decisions.length !== exports.VARIANT_IDS.length || new Set(decisions.map(d => d.variant)).size !== exports.VARIANT_IDS.length)
+        throw Error("Faltan decisiones independientes del ensayo.");
+    const states = { ...state.states }, events = [];
+    for (const decision of decisions) {
+        const { variant, version, signal } = decision;
+        let current = { ...states[variant] };
+        if (!current || current.version !== version)
+            throw Error("La versión del candidato no coincide con su estado.");
+        const append = (type, key, payload) => events.push({ variant, eventKey: `${current.signalHash}:${key}`, signalHash: current.signalHash, eventType: type, side: current.side, createdAt: observedAt, payload: { ...payload, trialId: state.trialId, variant, variantVersion: version, policyHash, referenceModelVersion: xauAuditTypes_1.MODEL_VERSION, sourceScanId: scanId } });
+        if ((current.status === "pending-entry" || current.status === "triggered") && current.payload) {
+            const next = (0, xauLifecycle_1.evaluateLifecycle)(current.payload, current.status, bars5, signal, observedAt, scanId);
+            current = { ...current, status: next.status, payload: next.payload, updatedAt: observedAt };
+            for (const event of next.events)
+                append(event.eventType, event.eventKey, event.payload);
+        }
+        else if (signal.side !== "NO TRADE" && signal.dataQuality?.ok !== false) {
+            current = { ...current, status: "pending-entry", signalHash: `shadow:${state.trialId}:${variant}:${newId()}`, side: signal.side, updatedAt: observedAt, payload: { signal, createdAt: observedAt, auditVersion: xauAuditTypes_1.AUDIT_VERSION, modelVersion: version, lifecycleVersion: xauAuditTypes_1.LIFECYCLE_VERSION, scanId, lastScanAt: observedAt, flags: [], observations: 0 } };
+            append("NEW_SIGNAL", "NEW_SIGNAL", { ...current.payload, decision, brokerExecution: false });
+        }
+        else
+            current = { ...current, updatedAt: observedAt };
+        states[variant] = current;
+    }
+    return { state: { ...state, states, revision: state.revision + 1, lastScanId: scanId, lastObservedAt: observedAt }, decisions, events };
 }
 
 };
@@ -907,4 +1039,4 @@ async function sendWebPush(sub, payload, key, subject) { validateSubscription(su
 
 };
 function get(id){if(cache[id])return cache[id].exports;if(!modules[id])throw Error("Unknown module "+id);const m={exports:{}};cache[id]=m;modules[id](p=>get(require("node:path").posix.normalize(require("node:path").posix.join(require("node:path").posix.dirname(id),p))),m,m.exports);return m.exports;}
-module.exports={engine:get("lib/xau/engine"),lifecycle:get("lib/xau/xauLifecycle"),audit:get("lib/xau/xauAuditTypes"),macro:get("lib/xau/macroContext"),feed:get("lib/biquote-feed"),sealed:get("lib/sealed-snapshot"),push:get("lib/web-push")};
+module.exports={engine:get("lib/xau/engine"),lifecycle:get("lib/xau/xauLifecycle"),audit:get("lib/xau/xauAuditTypes"),macro:get("lib/xau/macroContext"),variants:get("lib/xau/variants"),feed:get("lib/biquote-feed"),sealed:get("lib/sealed-snapshot"),push:get("lib/web-push")};
