@@ -452,10 +452,10 @@ exports.NEWS_RISK_POLICY = {
     scope: "Provisional risk windows, not a validated strategy; independent lifecycle trial pending"
 };
 exports.MACRO_SNAPSHOT = {
-    "version": "xau-macro-snapshot-0.1.1",
+    "version": "xau-macro-snapshot-0.1.2",
     "instrument": "XAU/USD",
     "firstObservedAt": 1791268258511,
-    "updatedAt": 1791354326609,
+    "updatedAt": 1791443373000,
     "feedActive": false,
     "coverage": "partial",
     "maxAgeMs": 21600000,
@@ -466,29 +466,36 @@ exports.MACRO_SNAPSHOT = {
             "name": "BLS",
             "url": "https://www.bls.gov/schedule/2026/10_sched.htm",
             "sourceUpdatedAt": "2026-02-18",
-            "observedAt": 1791354326609,
+            "observedAt": 1791443373000,
             "coverage": "Calendario nacional de octubre; selección de publicaciones materiales"
         },
         {
             "name": "BEA",
             "url": "https://www.bea.gov/news/schedule",
-            "sourceUpdatedAt": "2026-10-07",
-            "observedAt": 1791354326609,
+            "sourceUpdatedAt": "2026-10-08",
+            "observedAt": 1791443373000,
             "coverage": "Calendario de comercio, PIB e ingresos/gastos; no consenso"
         },
         {
             "name": "Federal Reserve",
             "url": "https://www.federalreserve.gov/newsevents/2026-october.htm",
             "sourceUpdatedAt": "2025-06-24",
-            "observedAt": 1791354326609,
+            "observedAt": 1791443373000,
             "coverage": "Calendario del Board: actas, FOMC y comparecencias; no todos los bancos regionales"
         },
         {
             "name": "DOL",
             "url": "https://www.dol.gov/ui/data.pdf",
             "sourceUpdatedAt": "2026-10-01",
-            "observedAt": 1791354326609,
-            "coverage": "Publicación del 1 de octubre consultada el 7; siguiente fecha exacta no confirmada en esta fuente"
+            "observedAt": 1791443373000,
+            "coverage": "PDF del 1 de octubre sigue disponible el 8; no confirma la hora de la próxima publicación de solicitudes."
+        },
+        {
+            "name": "Federal Reserve · actas publicadas",
+            "url": "https://www.federalreserve.gov/monetarypolicy/fomcminutes20260916.htm",
+            "sourceUpdatedAt": "2026-10-07",
+            "observedAt": 1791443373000,
+            "coverage": "Actas publicadas de septiembre. Hora real de disponibilidad inicial no reconstruida con esta consulta."
         }
     ],
     "missing": [
@@ -496,7 +503,8 @@ exports.MACRO_SNAPSHOT = {
         "Ingesta automática de cambios de calendario y resultados",
         "Feed continuo de noticias económicas/geopolíticas",
         "Consenso fechado, sorpresas, bid/ask y costes del broker",
-        "Archivo histórico de noticias punto-en-tiempo"
+        "Archivo histórico de noticias punto-en-tiempo",
+        "DOL: próxima hora exacta de solicitudes semanales no confirmada; el PDF consultado corresponde al 1 de octubre."
     ],
     "events": [
         {
@@ -574,7 +582,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1791448200000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791354326609,
+            "updatedAt": 1791443373000,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -590,7 +598,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1791981000000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791354326609,
+            "updatedAt": 1791443373000,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -606,7 +614,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1792000800000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791354326609,
+            "updatedAt": 1791443373000,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -622,7 +630,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1792067400000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791354326609,
+            "updatedAt": 1791443373000,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -638,7 +646,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1793210400000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791354326609,
+            "updatedAt": 1791443373000,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -654,7 +662,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1793212200000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791354326609,
+            "updatedAt": 1791443373000,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -670,7 +678,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1793277000000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791354326609,
+            "updatedAt": 1791443373000,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -686,7 +694,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1793277000000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791354326609,
+            "updatedAt": 1791443373000,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -702,7 +710,7 @@ exports.MACRO_SNAPSHOT = {
             "scheduledAt": 1793363400000,
             "actualPublishedAt": null,
             "firstObservedAt": 1791268258511,
-            "updatedAt": 1791354326609,
+            "updatedAt": 1791443373000,
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
@@ -722,38 +730,54 @@ exports.MACRO_SNAPSHOT = {
             "consensus": null,
             "surprise": null,
             "instrument": "XAU/USD"
+        },
+        {
+            "id": "fed-reserves-20261008",
+            "title": "Fed · balance y reservas H.4.1",
+            "kind": "other",
+            "source": "Federal Reserve",
+            "url": "https://www.federalreserve.gov/newsevents/2026-october.htm",
+            "sourceTimezone": "America/New_York",
+            "sourceLocalTime": "2026-10-08T16:30:00",
+            "scheduledAt": 1791491400000,
+            "actualPublishedAt": null,
+            "firstObservedAt": 1791443373000,
+            "updatedAt": 1791443373000,
+            "consensus": null,
+            "surprise": null,
+            "instrument": "XAU/USD"
         }
     ],
     "reports": [
         {
-            "id": "reuters-gold-20261007",
-            "title": "Reuters: el dólar presiona el oro mientras el mercado espera las actas de la Fed.",
+            "id": "reuters-gold-20261008",
+            "title": "Reuters: el oro se estabiliza tras caer; el mercado valora el debate de la Fed sobre inflación y tipos.",
             "source": "Reuters",
-            "url": "https://www.reuters.com/world/india/gold-edges-lower-with-focus-fed-minutes-rate-path-clues-2026-10-07/",
-            "publishedAt": 1791339480000,
+            "url": "https://www.reuters.com/world/india/gold-edges-higher-after-hitting-two-month-low-2026-10-08/",
+            "publishedAt": 1791422460000,
             "eventAt": null,
             "sourceUpdatedAt": null,
-            "firstObservedAt": 1791354326609,
-            "updatedAt": 1791354326609,
-            "ingestionLagMs": 14846609,
+            "firstObservedAt": 1791443373000,
+            "updatedAt": 1791443373000,
+            "ingestionLagMs": 20913000,
             "category": "economic",
             "instrument": "XAU/USD",
-            "coverage": "Consulta puntual. Hora de publicación con precisión de minuto; hora de última revisión desconocida."
+            "coverage": "Consulta fechada; precisión de publicación de un minuto. Hora de revisión y de shock desconocidas; contenido observado por la app en esta revisión, no conocido retrospectivamente."
         },
         {
-            "id": "reuters-markets-20261007",
-            "title": "Reuters relaciona el avance del petróleo con tensiones saudíes-hutíes y una tormenta en el golfo de México; el efecto sobre el oro no tiene dirección fija.",
+            "id": "reuters-markets-20261008",
+            "title": "Reuters informa de nuevos ataques a buques en el Golfo y presión del petróleo sobre los bonos. No implica una dirección automática para el oro.",
             "source": "Reuters",
-            "url": "https://www.reuters.com/world/china/global-markets-global-markets-2026-10-07/",
-            "publishedAt": 1791340800000,
+            "url": "https://www.reuters.com/world/china/global-markets-global-markets-2026-10-08/",
+            "publishedAt": 1791421020000,
             "eventAt": null,
             "sourceUpdatedAt": null,
-            "firstObservedAt": 1791354326609,
-            "updatedAt": 1791354326609,
-            "ingestionLagMs": 13526609,
+            "firstObservedAt": 1791443373000,
+            "updatedAt": 1791443373000,
+            "ingestionLagMs": 22353000,
             "category": "geopolitical",
             "instrument": "XAU/USD",
-            "coverage": "Contexto confirmado en informe fechado. No se conoce el instante del shock ni se vigila continuamente."
+            "coverage": "Consulta fechada; precisión de publicación de un minuto. Hora de revisión y de shock desconocidas; contenido observado por la app en esta revisión, no conocido retrospectivamente."
         }
     ]
 };
@@ -1035,7 +1059,8 @@ async function encryptPush(sub, payload, override) {
 async function vapidAuthorization(endpoint, key, subject, now = Date.now()) { const aud = new URL(endpoint).origin; if (!subject.startsWith("https://") && !subject.startsWith("mailto:"))
     throw Error("Contacto VAPID inválido."); const header = (0, exports.encode64)(text.encode(JSON.stringify({ typ: "JWT", alg: "ES256" }))), body = (0, exports.encode64)(text.encode(JSON.stringify({ aud, exp: Math.floor(now / 1000) + 3600, sub: subject }))), input = header + "." + body, privateKey = await crypto.subtle.importKey("jwk", key, { name: "ECDSA", namedCurve: "P-256" }, false, ["sign"]), signature = new Uint8Array(await crypto.subtle.sign({ name: "ECDSA", hash: "SHA-256" }, privateKey, text.encode(input))); if (signature.length !== 64)
     throw Error("Firma VAPID incompatible."); const pub = (0, exports.encode64)(join(new Uint8Array([4]), decode64(key.x), decode64(key.y))); return `vapid t=${input}.${(0, exports.encode64)(signature)}, k=${pub}`; }
-async function sendWebPush(sub, payload, key, subject) { validateSubscription(sub); const body = await encryptPush(sub, text.encode(JSON.stringify(payload))), authorization = await vapidAuthorization(sub.endpoint, key, subject); const r = await fetch(sub.endpoint, { method: "POST", redirect: "manual", signal: AbortSignal.timeout(12000), headers: { Authorization: authorization, "Content-Encoding": "aes128gcm", "Content-Type": "application/octet-stream", TTL: "60", Urgency: "normal" }, body: bytes(body) }); return { accepted: r.status === 201 || r.status === 202 || r.status === 200, expired: r.status === 404 || r.status === 410, httpStatus: r.status, retryAfter: r.headers.get("Retry-After") }; }
+async function sendWebPush(sub, payload, key, subject, options = {}) { validateSubscription(sub); const ttl = options.ttl ?? 60; if (!Number.isInteger(ttl) || ttl < 0 || ttl > 300)
+    throw Error("Duración del aviso inválida."); const body = await encryptPush(sub, text.encode(JSON.stringify(payload))), authorization = await vapidAuthorization(sub.endpoint, key, subject); const r = await fetch(sub.endpoint, { method: "POST", redirect: "manual", signal: AbortSignal.timeout(12000), headers: { Authorization: authorization, "Content-Encoding": "aes128gcm", "Content-Type": "application/octet-stream", TTL: String(ttl), Urgency: options.urgency ?? "normal" }, body: bytes(body) }); return { accepted: r.status === 201 || r.status === 202 || r.status === 200, expired: r.status === 404 || r.status === 410, httpStatus: r.status, retryAfter: r.headers.get("Retry-After") }; }
 
 };
 function get(id){if(cache[id])return cache[id].exports;if(!modules[id])throw Error("Unknown module "+id);const m={exports:{}};cache[id]=m;modules[id](p=>get(require("node:path").posix.normalize(require("node:path").posix.join(require("node:path").posix.dirname(id),p))),m,m.exports);return m.exports;}

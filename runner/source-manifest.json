@@ -7,10 +7,10 @@
     "lib/xau/xauPoi.ts": "a8746f4b57600b47e70a967ae0edc408866c0ae391fd1a3952f72f6908cade6c",
     "lib/xau/xauAuditTypes.ts": "668547717353b06846c15014d0c29d62689fd62a6c053e16ff0912a7cad76f47",
     "lib/xau/xauLifecycle.ts": "1bc3d69e7a155644a92ca16b9636ee47cd9cfc2c1b59aeef2ed793d26a9add61",
-    "lib/xau/macroContext.ts": "10355e14a05448f935d3aee4774a8cba990160ad8dc743ad33f68235ba87a543",
+    "lib/xau/macroContext.ts": "cdd53519f4d3bf11e6ff50969372acd86002372d081be629ed61c3f553134506",
     "lib/xau/variants.ts": "cada445f293b0f5a7ba620bc680f6524b7bb3b5983d67dc8c0ab21ed1af940a3",
     "lib/biquote-feed.ts": "42b816e17f27caf5a9e8288ad7650268da5d228b5017100e3ba0ed23b0d76204",
     "lib/sealed-snapshot.ts": "8290091f50266f181f3691a683255d279f881e01ce7cef7a8c20da75a3749f8d",
-    "lib/web-push.ts": "d90bedf3e0090933d62dfc7f385f74bb37618d321452e70760cecc786c9991f7"
+    "lib/web-push.ts": "3bda79e03ee7bc33b397babe59cbd10cb7838e922f155dd0a951c9ac4f6e7bc5"
   }
 }
