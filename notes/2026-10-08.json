@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "localDate": "2026-10-08",
+  "timezone": "Europe/Madrid",
+  "cutoff": "2026-10-08T19:38:57+02:00",
+  "windows": {
+    "previousFullDay": {
+      "from": "2026-10-07T00:00:00+02:00",
+      "to": "2026-10-08T00:00:00+02:00",
+      "plans": 8,
+      "activations": 4,
+      "closes": {
+        "total": 4,
+        "tp": 1,
+        "sl": 3,
+        "ambiguous": 0,
+        "evaluable": 4
+      },
+      "invalidatedBeforeEntry": 4,
+      "pendingAtEnd": 0,
+      "openAtEnd": 0,
+      "grossR": -1
+    },
+    "currentPartialDay": {
+      "from": "2026-10-08T00:00:00+02:00",
+      "to": "2026-10-08T19:38:57+02:00",
+      "plans": 5,
+      "activations": 2,
+      "closes": {
+        "total": 2,
+        "tp": 0,
+        "sl": 2,
+        "ambiguous": 0,
+        "evaluable": 2
+      },
+      "invalidatedBeforeEntry": 2,
+      "pendingAtCutoff": 1,
+      "openAtCutoff": 0,
+      "grossR": -2
+    }
+  },
+  "currentPlan": {
+    "id": "github:b7aa302f-16b2-4063-9f62-ffb8ac4f3dda",
+    "state": "pending-entry",
+    "side": "BUY",
+    "modelVersion": "xau-rules-1.1.0",
+    "closedBarAt": "2026-10-08T17:35:00.000Z",
+    "decidedAt": "2026-10-08T17:37:56.304Z",
+    "entryLow": 4129.466017385357,
+    "entryHigh": 4130.842846671071,
+    "stop": 4114.163067857143,
+    "takeProfit": 4162.137160370356,
+    "targetR": 2,
+    "score": 55,
+    "confidence": 78,
+    "warning": "score/confidence are engine outputs, not hit-rate probabilities",
+    "poiShadow": "NO TRADE"
+  },
+  "reconciliation": {
+    "siteVersion": 26,
+    "siteCommit": "79c5034cd6fcfa1888a7c78f688a057dfca9d43b",
+    "sourceCommit": "fba667c23d8c3d3b452e3d34d127729824d4d05e",
+    "importedRevision": 143,
+    "sourceRevision": 143,
+    "syncError": null,
+    "duplicateMainEventKeys": 0,
+    "recoveryRecords": 0,
+    "historicalFlootData": "not recovered",
+    "virtualAccount": "derived from the public ledger; no independent broker/account ledger is stored",
+    "realBrokerCosts": "unknown",
+    "openRiskAtCutoff": "0 open operations; pending plans are not counted as open risk"
+  },
+  "dataQuality": {
+    "modelScansBeforeFinalRefresh": 130,
+    "finalRefreshImportedAdditionalScans": 3,
+    "decisionsBeforeFinalRefresh": {
+      "noTrade": 95,
+      "buy": 17,
+      "sell": 18
+    },
+    "dataQualityBeforeFinalRefresh": {
+      "ok": 124,
+      "bad": 6
+    },
+    "futureClosedBars": 0,
+    "duplicateInputHashes": 0,
+    "caveat": "Counts by signal, activation and close date are kept separate."
+  },
+  "operations": {
+    "previousFullDay": [
+      {
+        "id": "b7fe6a0e",
+        "outcome": "SL",
+        "durationMinutes": 0,
+        "note": "entry and stop occurred in the same observation; lifecycle classifies SL"
+      },
+      {
+        "id": "002eabc4",
+        "outcome": "TP",
+        "durationMinutes": 143.1
+      },
+      {
+        "id": "c72cdefd",
+        "outcome": "SL",
+        "durationMinutes": 96.3
+      },
+      {
+        "id": "81579246",
+        "outcome": "SL",
+        "durationMinutes": 15.6
+      }
+    ],
+    "currentPartialDay": [
+      {
+        "id": "217d4c18",
+        "outcome": "SL",
+        "durationMinutes": 171.4
+      },
+      {
+        "id": "aee84810",
+        "outcome": "SL",
+        "durationMinutes": 117.7
+      }
+    ],
+    "traceSource": "signal_history and signal_state imported into Site D1 from encrypted GitHub snapshots"
+  },
+  "scheduler": {
+    "observedSnapshotPublicationsToday": 33,
+    "firstAt": "2026-10-08T05:25:56Z",
+    "lastAt": "2026-10-08T17:38:02Z",
+    "intervalMinutes": {
+      "min": 5.2,
+      "max": 30.38,
+      "average": 22.88
+    },
+    "limitation": "Commit timestamps do not prove every trigger was scheduled; nominal 5-minute punctuality is not guaranteed."
+  },
+  "push": {
+    "configuredDevices": 1,
+    "deliveryRows": 21,
+    "latestPlanServiceStatus": "accepted-by-service",
+    "latestPlanHttpStatus": 201,
+    "receivedConfirmed": false,
+    "limitation": "Service acceptance is not device-receipt telemetry."
+  },
+  "parallelEvaluation": {
+    "policyVersion": "xau-parallel-0.1.0",
+    "comparableRevision": 93,
+    "v0": "pending-entry BUY",
+    "v1": "pending-entry BUY",
+    "v2": "idle; POI veto",
+    "n0": "resolved; stale macro coverage blocks new entries only",
+    "promoted": false,
+    "limitation": "Samples are too small to infer superiority."
+  },
+  "macro": {
+    "snapshotVersion": "xau-macro-snapshot-0.1.2",
+    "snapshotUpdatedAt": "2026-10-08T07:09:33Z",
+    "maxAgeHours": 6,
+    "statusAtCutoff": "coverage-unknown (stale)",
+    "feedActive": false,
+    "knownAtDecision": "FOMC Sep 15-16 minutes released 2026-10-07 20:00 Europe/Madrid",
+    "nextOfficialEvents": [
+      {
+        "event": "US CPI September",
+        "at": "2026-10-14T14:30:00+02:00"
+      },
+      {
+        "event": "Federal Reserve Beige Book",
+        "at": "2026-10-14T20:00:00+02:00"
+      },
+      {
+        "event": "US PPI September",
+        "at": "2026-10-15T14:30:00+02:00"
+      },
+      {
+        "event": "FOMC decision and press conference",
+        "at": "2026-10-28",
+        "note": "official calendar; exact press-conference timing must remain source-driven"
+      },
+      {
+        "event": "US PCE September and advance GDP Q3",
+        "at": "2026-10-29T13:30:00+01:00"
+      }
+    ],
+    "limitation": "Partial snapshot, not continuous intraday geopolitical or economic-event protection."
+  },
+  "sourceHealth": {
+    "quoteAt": "2026-10-08T17:38:55Z",
+    "quote": 4131.034,
+    "source": "biquote indicative anonymous MT5 broker",
+    "stale": false,
+    "limitation": "Not an INFINOX or official COMEX execution price."
+  },
+  "action": "Keep the public model frozen. Reconcile the pending plan on its next lifecycle event; improve cadence only through an owner-authorized free scheduler account; retain coverage-unknown when macro data is stale."
+}
